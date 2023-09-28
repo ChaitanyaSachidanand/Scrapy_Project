@@ -28,14 +28,14 @@ for i in range(1,4):
         med_link=browser.find_element(By.XPATH,"(//div[@class='style__product-card___1gbex style__card___3eL67 style__raised___3MFEA style__white-bg___10nDR style__overflow-hidden___2maTX'])["+str(j)+"]")
         # med_link=browser.find_element(By.XPATH,"(//div[@class='style__product-card___1gbex style__card___3eL67 style__raised___3MFEA style__white-bg___10nDR style__overflow-hidden___2maTX'])[1]")
         med_link.click()
-        
+        med_data={}
         browser.switch_to.window(browser.window_handles[1])
         element = browser.find_element(By.XPATH,"//h1[@class='DrugHeader__title-content___2ZaPo']")
-        print(element.text)
+        med_data["Name"]=element.text
         element = browser.find_element(By.XPATH,"//span[normalize-space()='Prescription Required']")
-        print(element.text)
+        med_data["Prescription"]=element.text
         element = browser.find_element(By.XPATH,'//*[@id="overview"]/div/div/div/div')
-        print(element.text)
+        med_data["Name"]=element.text
         element = browser.find_element(By.XPATH,'//*[@id="uses_and_benefits"]/div/div/div[1]/div')
         print(element.text)
         # //div[normalize-space()='Avastin 100mg Injection']
