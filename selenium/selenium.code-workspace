@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "selenium",
+			"path": "."
+		},
+		{
+			"name": "chromedriver_win32",
+			"path": "../../../Downloads/chromedriver_win32"
+		}
+	],
+	"settings": {}
+}
