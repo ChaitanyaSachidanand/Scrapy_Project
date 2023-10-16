@@ -14,18 +14,15 @@ browser = webdriver.Chrome(
     service=ChromeService(ChromeDriverManager().install()))
 browser.implicitly_wait(10)
 
-# query = "Python"
 
-# <div class="UpdateCityModal__cancel-btn___2jWwS UpdateCityModal__btn___oMW5n" data-auto-updatecity-cancel="true">Cancel</div>
-# <div class="UpdateCityModal__cancel-btn___2jWwS UpdateCityModal__btn___oMW5n" data-auto-updatecity-cancel="true">Cancel</div>
-# //*[@id="container"]/div/div/div[2]/a[2]
 browser.get("https://www.1mg.com/drugs-all-medicines")
 # browser.implicitly_wait(30)
 browser.find_element(By.XPATH,'//*[@id="update-city-modal"]/div/div[3]/div[1]').click()
 print("done")
 med_data={}
+
 for i in range(1,27):
-    med_data["Med_Character"]=i
+    med_data["Med_Character"]=chr(64+i)
     browser.find_element(By.XPATH,'//*[@id="container"]/div/div/div[2]/a['+str(i)+']').click()
     lnks=browser.find_elements(By.TAG_NAME,"a")
     print(len(lnks))
@@ -40,7 +37,7 @@ for i in range(1,27):
         count+=1
         print("The count of the current page: ",count)
         med_data["page_count"]=count
-        for j in range(1,len(lnks[337:-36])+1,20):
+        for j in range(1,len(lnks[337:-36])+1):
              
             # browser.refresh()   
             med_link=browser.find_element(By.XPATH,"(//div[@class='style__product-card___1gbex style__card___3eL67 style__raised___3MFEA style__white-bg___10nDR style__overflow-hidden___2maTX'])["+str(j)+"]")
@@ -205,8 +202,6 @@ for i in range(1,27):
             element = browser.find_element(By.CSS_SELECTOR,".next")
             # next link-disabled
             # //*[@id="container"]/div/div/div[5]/ul/li[8]
-            
-        #     element = browser.find_element(By.XPATH,"//*[@id='container']/div/div/div[5]/ul/li[9]/a")
             element.click()
             
       
